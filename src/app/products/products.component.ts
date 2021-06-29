@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent  {
   products = [];
 
+  status = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Online");
+    }, 2000);
+  })
+
   title:string = '';
 
   updateTitle(e:Event)
@@ -27,4 +33,10 @@ export class ProductsComponent  {
   //   {
   //     this.showAll = !this.showAll;
   //   }
+
+  onDelete(title:string)
+  {
+    const filtered = this.products.filter(product => product.title !== title);
+    this.products = filtered;
+  }
 }

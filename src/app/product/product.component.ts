@@ -1,13 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-product',
     template: `
         <div>
             <!-- <h4 [ngStyle] = "{'display':showHead()}">Product</h4> -->
-            <h4 [ngClass] = "'highlight classic'">Product</h4>
-            {{title}}
+            <h4 [ngClass] = "'highlight classic'" (click) = "deleteItem()">Product</h4>
+            
+            
+            {{title | uppercase | shorten:15}}
+
+            {{saleDate | date :'medium' | uppercase}}
         </div>
+
+
     `,
     styles: [`
     .highlight {
@@ -21,11 +27,19 @@ import { Component, Input } from '@angular/core';
 export class ProductComponent
 {
     @Input() title;
+    @Output() delete = new EventEmitter<string>();
+    saleDate = new Date();
+
     toggle = 'none';
     ss = {backgroundColor: '#daa'};
 
     showHead()
     {
         return 'none';
+    }
+
+    deleteItem()
+    {
+        this.delete.emit(this.title);
     }
 }
