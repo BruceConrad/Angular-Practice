@@ -1,15 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-product',
     template: `
         <div>
-            <h4>Product Info</h4>
+            <!-- <h4 [ngStyle] = "{'display':showHead()}">Product</h4> -->
+            <h4 [ngClass] = "'highlight classic'">Product</h4>
             {{title}}
         </div>
-    `
+    `,
+    styles: [`
+    .highlight {
+        color: red;
+    }
+    .classic{
+        background-color: #aff;
+    }
+    `]
 })
 export class ProductComponent
 {
-    title = 'Furniture';
+    @Input() title;
+    toggle = 'none';
+    ss = {backgroundColor: '#daa'};
+
+    showHead()
+    {
+        return 'none';
+    }
 }

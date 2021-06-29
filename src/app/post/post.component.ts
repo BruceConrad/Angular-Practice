@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-post',
-  templateUrl: './post.component.html',
+  //templateUrl: './post.component.html',
+  template: `
+    <div>{{title}}
+      <br>
+      <button (click)="onDelete($event)">Delete</button>
+    </div>
+  `,
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
+  @Input('heading') title:string //= 'This is a sample post component';
+  @Output('remove') delete = new EventEmitter<string>();
 
-  constructor() { }
 
-  ngOnInit(): void {
+
+  show:boolean = false;
+  size:number = 34;
+
+  toggleDescription()
+  {
+    this.show = !this.show;
   }
 
+  onDelete(e:any)
+  {
+    console.log('component to be deleted '+this.title);
+    this.delete.emit(this.title);
+  }
 }

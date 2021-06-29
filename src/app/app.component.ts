@@ -2,24 +2,25 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-first',
-  templateUrl: './app.component.html',
-  // template: `
-  //   <div>
-  //     {{title}}
-  //     {{sayHello()}}
-  //   </div>
-  // `,
-  // styleUrls: ['./app.component.css']
-  styles: [`
-  div{
-    background-color: #def;
-  }
-  `]
+  // templateUrl: './app.component.html',
+   template: `
+     <div>
+        <!-- <app-post [heading] = "'Post 1'" (remove) = "onDeletePost($event)"></app-post>
+        <app-post [heading] = "'Post 2'" (remove) = "onDeletePost($event)"></app-post>
+        <app-post [heading] = "'Post 3'" (remove) = "onDeletePost($event)"></app-post> -->
+        
+        <!-- <app-product></app-product> -->
+        <app-products></app-products>
+     </div>
+   `,
+  styleUrls: ['./app.component.css']
+
 })
 export class AppComponent {
   title = 'my-first-app';
   active = false;
-  name = 'John Doe'
+  name = 'John Doe';
+  expression = 'Test';
 
   submit()
   {
@@ -34,5 +35,31 @@ export class AppComponent {
   changeNameHandler(e:any)
   {
     this.name = e.target.value;
+  }
+
+  getValue()
+  {
+    return 3;
+  }
+
+  leaveFocus()
+  {
+    console.log('done editing');
+  }
+
+  textChange(e:any)
+  {
+    this.print('some text');
+    console.log('done editing: ' + e.target.value);
+  }
+
+  print(txt:any)
+  {
+    console.log(txt);
+  }
+
+  onDeletePost(e:string)
+  {
+    console.log('delete post event fired ' + e);
   }
 }
