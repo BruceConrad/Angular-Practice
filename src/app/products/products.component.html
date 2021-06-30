@@ -20,5 +20,19 @@
 <button (click) = "onAdd()">Add</button>
 
 <app-product *ngFor = "let item of products; let i = index"
-[title] = "item.title" (delete) = "onDelete($event)"></app-product>
+[product] = "item" (delete) = "onDelete($event)">
+    <!-- Content Projection -->
+    <!-- single-slot -->
+    <div>
+        <h2>Title {{item.title}}</h2>
+    </div>
+
+    <!-- multiple-slot -->
+    <div footer>
+        2021 Copyright &copy;
+    </div>
+
+    <!-- conditional -->
+    
+</app-product>
 

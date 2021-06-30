@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent  {
-  products = [];
-
+  //products = [];
+  products = [
+    {title:'TV'},{title:'Mobile'}
+  ];
   status = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve("Online");

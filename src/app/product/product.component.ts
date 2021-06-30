@@ -5,12 +5,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     template: `
         <div>
             <!-- <h4 [ngStyle] = "{'display':showHead()}">Product</h4> -->
+            <ng-content></ng-content>
             <h4 [ngClass] = "'highlight classic'" (click) = "deleteItem()">Product</h4>
             
             
-            {{title | uppercase | shorten:15}}
+            {{product.title | uppercase | shorten:15}}
 
             {{saleDate | date :'medium' | uppercase}}
+
+            <ng-content select= '[footer]'></ng-content>
         </div>
 
 
@@ -26,7 +29,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ProductComponent
 {
-    @Input() title;
+    @Input() product;
     @Output() delete = new EventEmitter<string>();
     saleDate = new Date();
 
@@ -40,6 +43,6 @@ export class ProductComponent
 
     deleteItem()
     {
-        this.delete.emit(this.title);
+        this.delete.emit(this.product.title);
     }
 }
