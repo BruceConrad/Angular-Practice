@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from './products.service';
 
 @Component({
   selector: 'app-products',
@@ -6,10 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent  {
-  //products = [];
-  products = [
-    {title:'TV'},{title:'Mobile'}
-  ];
+  products = [];
+  
   status = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve("Online");
@@ -17,6 +16,20 @@ export class ProductsComponent  {
   })
 
   title:string = '';
+  service:ProductService;
+
+  constructor(service:ProductService)
+  {
+    this.service = service;
+  }
+
+  ngOnInit()
+  {
+    this.service.subject.subscribe((data) => {
+      console.log('received data');
+      this.products = data;
+    })
+  }
 
   updateTitle(e:Event)
   {
@@ -25,7 +38,7 @@ export class ProductsComponent  {
 
   onAdd()
   {
-    this.products.push({title:this.title})
+    this.service.addProduct({title:this.title})
   }
   
   // showAll:boolean = true;
@@ -38,7 +51,6 @@ export class ProductsComponent  {
 
   onDelete(title:string)
   {
-    const filtered = this.products.filter(product => product.title !== title);
-    this.products = filtered;
+    this.service.deleteProduct(title);
   }
 }

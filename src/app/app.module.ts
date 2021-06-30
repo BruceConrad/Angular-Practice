@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { PostComponent } from './post/post.component';
 import { ProductsComponent } from './products/products.component';
 import { ShortenPipe } from './shorten.pipe';
+import { ProductService } from './products/products.service';
+import { ObservableSampleComponent } from './observablesample.component';
+import { ProductListComponent } from './products/list.component';
+import { ApiSampleComponent } from './api-sample/api-sample.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +18,14 @@ import { ShortenPipe } from './shorten.pipe';
     ProductComponent,
     PostComponent,
     ProductsComponent,
-    ShortenPipe
+    ShortenPipe,
+    ObservableSampleComponent,
+    ProductListComponent,
+    ApiSampleComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

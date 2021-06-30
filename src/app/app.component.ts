@@ -10,7 +10,10 @@ import { Component } from '@angular/core';
         <app-post [heading] = "'Post 3'" (remove) = "onDeletePost($event)"></app-post> -->
         
         <!-- <app-product></app-product> -->
-        <app-products></app-products>
+        <!-- <app-products></app-products>
+        <app-product-list></app-product-list> -->
+        <!-- <app-observablesample></app-observablesample> -->
+        <app-api-sample></app-api-sample>
      </div>
    `,
   styleUrls: ['./app.component.css']

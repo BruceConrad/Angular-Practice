@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ProductService } from '../products/products.service';
 
 @Component({
     selector: 'app-product',
@@ -25,13 +26,27 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     .classic{
         background-color: #aff;
     }
-    `]
+    `],
+    providers:[]
 })
 export class ProductComponent
 {
     @Input() product;
     @Output() delete = new EventEmitter<string>();
     saleDate = new Date();
+
+    service:ProductService;
+
+    constructor(service:ProductService)
+    {
+        this.service = service;
+    }
+
+    ngOnInit()
+    {
+        let prod = this.service.getProduct('1');
+        console.log(prod);
+    }
 
     toggle = 'none';
     ss = {backgroundColor: '#daa'};
