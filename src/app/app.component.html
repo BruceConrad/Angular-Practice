@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   Hello there {{title}}
 
   <br>
@@ -8,8 +8,37 @@
   [value] = "name">
   <br>
   {{name}}
-  <!-- <button disabled = "true">Submit</button> -->
+  <button disabled = "true">Submit</button>
   <button [disabled] = "active" (click) = "submit()">Submit</button>
 
   <app-product></app-product>
 </div>
+
+<div>
+  <app-post [heading] = "'Post 1'" (remove) = "onDeletePost($event)"></app-post>
+  <app-post [heading] = "'Post 2'" (remove) = "onDeletePost($event)"></app-post>
+  <app-post [heading] = "'Post 3'" (remove) = "onDeletePost($event)"></app-post>
+  
+   <app-product></app-product> 
+   <app-products></app-products>
+  <app-product-list></app-product-list> 
+   <app-observablesample></app-observablesample> 
+  <app-api-sample></app-api-sample>
+</div> -->
+
+<!-- <div>
+  <input type="text" #inputText>
+  <button (click) = "searchText(inputText)">Search</button>
+</div> -->
+<!-- <app-signup></app-signup> -->
+<!-- <app-login></app-login> -->
+<!-- <app-vehicles></app-vehicles>
+<app-inventory></app-inventory> -->
+
+<ul>
+  <li routerLinkActive = "active" [routerLinkActiveOptions] ={exact:true}><a routerLink = "">Home</a></li>
+  <li routerLinkActive = "active"><a routerLink = "products">Products</a></li>
+  <li routerLinkActive = "active"><a routerLink = "blog">Blog</a></li>
+</ul>
+
+<router-outlet></router-outlet>

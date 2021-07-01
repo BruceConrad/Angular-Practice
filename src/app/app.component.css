@@ -1,0 +1,9 @@
+div{
+    background-color: aqua;
+}
+
+li.active
+{
+    background-color: cadetblue;
+    color: red;
+}
