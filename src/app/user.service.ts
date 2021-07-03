@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   constructor() { }
+
+  findUserById(id)
+  {
+    return {id:id, name: 'Bruce'}
+  }
 }

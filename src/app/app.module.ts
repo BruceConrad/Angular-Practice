@@ -21,6 +21,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductInfoComponent } from './product/productinfo.component';
 import { NotFoundComponent } from './routes/notfound.component';
 import { AuthGuardService } from './routes/authguard.service';
+import { ParkComponent } from './park.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent, children:[{path:'products/:id', component:ProductInfoComponent}]},
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     InventoryComponent,
     HomeComponent,
     ProductInfoComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ParkComponent
   ],
   imports: [
     BrowserModule,
